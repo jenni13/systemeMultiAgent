@@ -15,7 +15,7 @@ public class MyAMAS extends Amas<Salle>{
 	        //Create one agent per fork
 	        for (int i=0;i<getEnvironment().getCapteurLum().length-1;i++) {
 	            l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
-	            // l[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
+	            // v[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
 	        }
 
 	        //Let the last philosopher takes the first fork (round table) 
