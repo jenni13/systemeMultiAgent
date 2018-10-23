@@ -3,36 +3,38 @@ package systemeMultiAgent;
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Scheduling;
 
-public class MyAMAS extends Amas<Table>{
+public class MyAMAS extends Amas<Salle>{
 	  
-	public MyAMAS(Table env) {
+	public MyAMAS(Salle env) {
 	        super(env, Scheduling.DEFAULT);
 	    }
 	    @Override
 	    protected void onInitialAgentsCreation() {
-	        Philosopher[] p = new Philosopher[getEnvironment().getForks().length];
+	    	AgentLumiereIntelligente[] l = new AgentLumiereIntelligente[getEnvironment().getCapteurLum().length];
+	    	//AgentVolletAuto[] v = new AgentVolletAuto[getEnvironment().getCapteurLum().length];
 	        //Create one agent per fork
-	        for (int i=0;i<getEnvironment().getForks().length-1;i++) {
-	            p[i] =new Philosopher(i, this, getEnvironment().getForks()[i], getEnvironment().getForks()[i+1]);
+	        for (int i=0;i<getEnvironment().getCapteurLum().length-1;i++) {
+	            l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
+	            // l[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
 	        }
 
 	        //Let the last philosopher takes the first fork (round table) 
-	        p[getEnvironment().getForks().length-1]=new Philosopher(getEnvironment().getForks().length-1, this, getEnvironment().getForks()[getEnvironment().getForks().length-1], getEnvironment().getForks()[0]);
-
+	        l[getEnvironment().getCapteurLum().length-1]=new AgentLumiereIntelligente(getEnvironment().getCapteurLum().length-1, this, getEnvironment().getCapteurLum()[getEnvironment().getCapteurLum().length-1], getEnvironment().getCapteurLum()[0]);
+	        //l[getEnvironment().getCapteurLum().length-1] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
 
 	        //Add neighborhood
-	        for (int i=1;i<p.length;i++) {
-	            p[i].addNeighbor(p[i-1]);
-	            p[i-1].addNeighbor(p[i]);
+	        for (int i=1;i<l.length;i++) {
+	            l[i].addNeighbor(l[i-1]);
+	            l[i-1].addNeighbor(l[i]);
 	        }
-	        p[0].addNeighbor(p[p.length-1]);
-	        p[p.length-1].addNeighbor(p[0]);
+	        l[0].addNeighbor(l[l.length-1]);
+	        l[l.length-1].addNeighbor(l[0]);
 	    }
 
 
 
 public static void main(String[] args) {
-    Table env = new Table();
+    Salle env = new Salle();
     new MyAMAS(env);
 }
 
