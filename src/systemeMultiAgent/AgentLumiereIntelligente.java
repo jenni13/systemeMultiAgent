@@ -6,23 +6,22 @@ import fr.irit.smac.lxplot.commons.ChartType;
 
 public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 	
-    private CapteurLuminosite left;
-    private CapteurLuminosite right;
-    private double hungerDuration;
-    private double eatenPastas;
+    private CapteurLuminosite Interne;
+    private CapteurLuminosite Externe;
+    private double luminositeIntension;
     private int id;
 
     public enum State {
-        THINK, HUNGRY, EATING
+        Eteindre ,ALLUMER
     }
 
-    private State state = State.THINK;
+    private State state = State.Eteindre;
 
-    public AgentLumiereIntelligente(int id, MyAMAS amas, CapteurLuminosite left, CapteurLuminosite right) {
+    public AgentLumiereIntelligente(int id, MyAMAS amas, CapteurLuminosite Interne, CapteurLuminosite Externe) {
         super(amas);
         this.id = id;
-        this.left = left;
-        this.right = right;
+        this.Interne = Interne;
+        this.Externe = Externe;
     }
 
     @Override
@@ -73,7 +72,7 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 
     @Override
     protected double computeCriticality() {
-        return hungerDuration;
+        return luminositeIntension;
     }
 
     @Override

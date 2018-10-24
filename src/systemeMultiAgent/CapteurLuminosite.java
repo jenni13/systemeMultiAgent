@@ -1,9 +1,27 @@
 package systemeMultiAgent;
+import java.util.Random;
 
 public class CapteurLuminosite {
+    //private AgentLumiereIntelligente takenBy;
+    int n;
 
-    private AgentLumiereIntelligente takenBy;
 
+    public CapteurLuminosite(int n) {
+        this.n = n;
+    }
+ public int Valeur ()
+ {
+     Random rand = new Random();
+     n = rand.nextInt(50) + 1;
+
+     System.out.println("Luminosité = " + n);
+     return n;
+ }
+
+}
+
+
+/*
     public synchronized boolean tryTake(AgentLumiereIntelligente asker) {
         if (takenBy != null)
             return false;
