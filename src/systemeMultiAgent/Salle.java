@@ -15,7 +15,8 @@ public class Salle extends Environment{
         this.maDate = new Date();
     }
     @Override
-    public void onInitialization() {
+    public void onInitialization() 
+    {
         // Set 5 capteurs on the table
     	
         capteurLum = new CapteurLuminosite[5];
@@ -23,7 +24,8 @@ public class Salle extends Environment{
             capteurLum[i] = new CapteurLuminosite();
     }
 
-    public CapteurLuminosite[] getCapteurLum() {
+    public CapteurLuminosite[] getCapteurLum() 
+    {
         return capteurLum;
     }
 }
