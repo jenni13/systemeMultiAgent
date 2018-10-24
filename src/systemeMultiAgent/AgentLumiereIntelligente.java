@@ -6,22 +6,22 @@ import fr.irit.smac.lxplot.commons.ChartType;
 
 public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 	
-    private CapteurLuminosite Interne;
-    private CapteurLuminosite Externe;
+    private CapteurLuminosite interieur;
+    private CapteurLuminosite exterieur;
     private double luminositeIntension;
     private int id;
 
     public enum State {
-        Eteindre ,ALLUMER
+        ETEINDRE ,ALLUMER
     }
 
-    private State state = State.Eteindre;
+    private State state = State.ETEINDRE;
 
-    public AgentLumiereIntelligente(int id, MyAMAS amas, CapteurLuminosite Interne, CapteurLuminosite Externe) {
+    public AgentLumiereIntelligente(int id, MyAMAS amas, CapteurLuminosite interieur, CapteurLuminosite exterieur) {
         super(amas);
         this.id = id;
-        this.Interne = Interne;
-        this.Externe = Externe;
+        this.interieur = interieur;
+        this.exterieur = exterieur;
     }
 
     @Override
@@ -34,43 +34,31 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
     protected void onDecideAndAct() {
         State nextState = state;
         switch (state) {
-        case EATING:
-            eatenPastas++;
-            if (new Random().nextInt(101) > 50) {
-                left.release(this);
-                right.release(this);
-                nextState = State.THINK;
-            }
-            break;
-        case HUNGRY:
-            hungerDuration++;
-            if (getMostCriticalNeighbor(true) == this) {
-                if (left.tryTake(this) && right.tryTake(this))
-                    nextState = State.EATING;
-                else{
-                    left.release(this);
-                    right.release(this);
-                }
-            } else {
-                left.release(this);
-                right.release(this);
-            }
-            break;
-        case THINK:
-            if (new Random().nextInt(101) >50) {
-                hungerDuration = 0;
-                nextState = State.HUNGRY;
-            }
-            break;
-        default:
-            break;
 
-        }
 
-        state = nextState;
+                case ETEINDRE:
+                    if (interieur.Valeur() > 15)
+                    {
+
+                        System.out.println(" Allumer la  Lumiere " + this.id);
+                        break;
+                    }
+            case ALLUMER:
+                    if (exterieur.Valeur() < 15)
+                    {
+                        System.out.println("fermer la lumiere " + this.id);
+                        break;
+                    }
+
+                    default:
+                    break;
+            }
+            }
     }
+        //state = nextState;
 
-    @Override
+
+    /*@Override
     protected double computeCriticality() {
         return luminositeIntension;
     }
@@ -79,5 +67,4 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
     protected void onUpdateRender() {
         LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
     }
-
-}
+*/

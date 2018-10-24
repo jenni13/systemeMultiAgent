@@ -10,7 +10,7 @@ import systemeMultiAgent.AgentLumiereIntelligente.State;
 public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
-    private CapteurLuminosite exterieur;
+    private CapteurLuminosite  ;
     int id;
     
     
