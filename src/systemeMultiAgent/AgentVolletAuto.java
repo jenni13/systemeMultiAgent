@@ -18,7 +18,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         OUVERT, FERMER
     }
 
-    private State state = State.FERMER;
+    private State state = State.OUVERT;
     
 	public AgentVolletAuto(int id, MyAMAS amas,CapteurLuminosite interieur,CapteurLuminosite exterieur) 
 	{
@@ -40,23 +40,25 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         State nextState = state;
         switch (state) {
         case OUVERT:
-        	if(interieur.tryTake(this)<10 || exterieur.tryTake(this))
-        	{	
-        		System.out.println("Ouverture volet"+ this.id);
-        		break;
-        	}
+        		if(interieur.Valeur()<10 || exterieur.Valeur()>15)
+        		{
+        			
+        			System.out.println(" Ouverture volet numero "+ this.id);
+        			break;
+        		}
         case FERMER:
-        	if(interieur.tryTake(this)>10 || exterieur.tryTake(this)>12)
-        	{	
-        		System.out.println("fermeture volet"+ this.id);
-        		break;
-        	}
+        		if (exterieur.Valeur()<10)
+        		{
+        			System.out.println("fermeture volet numero "+ this.id);
+        			break;
+        		}
+        	
         default:
             break;
 
         }
 
-        state = nextState;
+        //state = nextState;
     }
 
     /*@Override

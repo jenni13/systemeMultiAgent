@@ -17,7 +17,7 @@ public class Salle extends Environment{
     @Override
     public void onInitialization() 
     {
-        // Set 5 capteurs on the table
+        // Set 5 captors on the room
     	
         capteurLum = new CapteurLuminosite[5];
         for (int i = 0; i < capteurLum.length; i++)

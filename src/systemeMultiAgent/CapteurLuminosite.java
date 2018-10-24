@@ -19,6 +19,8 @@ public class CapteurLuminosite {
  }
 
 }
+
+
 /*
     public synchronized boolean tryTake(AgentLumiereIntelligente asker) {
         if (takenBy != null)
@@ -36,6 +38,6 @@ public class CapteurLuminosite {
     public synchronized boolean owned(AgentLumiereIntelligente asker) {
         return takenBy == asker;
     }
-    */
 
 
+}
