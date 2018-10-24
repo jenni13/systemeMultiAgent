@@ -10,12 +10,12 @@ public class MyAMAS extends Amas<Salle>{
 	    }
 	    @Override
 	    protected void onInitialAgentsCreation() {
-	    	AgentLumiereIntelligente[] l = new AgentLumiereIntelligente[getEnvironment().getCapteurLum().length];
+	    	//AgentLumiereIntelligente[] l = new AgentLumiereIntelligente[getEnvironment().getCapteurLum().length];
 	    	AgentVolletAuto[] v = new AgentVolletAuto[getEnvironment().getCapteurLum().length];
 	        //Create one light an one shutter per captors
 	        for (int i=0;i<getEnvironment().getCapteurLum().length-1;i++) 
 	        {
-	            l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
+	            //l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
 	            v[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
 	        }
 	    }
