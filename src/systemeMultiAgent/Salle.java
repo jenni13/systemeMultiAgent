@@ -1,5 +1,6 @@
 package systemeMultiAgent;
 
+
 import fr.irit.smac.amak.Environment;
 import fr.irit.smac.amak.Scheduling;
 import java.util.*;
@@ -8,11 +9,16 @@ import java.util.*;
 
 public class Salle extends Environment{
     private CapteurLuminosite[] capteurLum;
-	private Date maDate;
+    Calendar cal;
+    int hour ;
+    int minute;
 	
     public Salle() {
         super(Scheduling.DEFAULT);
-        this.maDate = new Date();
+        cal = Calendar.getInstance();
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
+
     }
     @Override
     public void onInitialization() 
