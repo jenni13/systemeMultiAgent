@@ -10,12 +10,8 @@ import systemeMultiAgent.AgentLumiereIntelligente.State;
 public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
-<<<<<<< HEAD
     private CapteurLuminosite exterieur;
     private Salle date;
-=======
-    private CapteurLuminosite  exterieur ;
->>>>>>> branch 'master' of https://github.com/jenni13/systemeMultiAgent.git
     int id;
     
     
@@ -45,7 +41,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         State nextState = state;
         switch (state) {
         case OUVERT:
-        		if(date.)
+
         		if(interieur.Valeur()<10 || exterieur.Valeur()>15)
         		{
         			
@@ -64,13 +60,13 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 
         }
 
-        //state = nextState;
+        state = nextState;
     }
 
-    /*@Override
+    @Override
     protected void onUpdateRender()
     {
-        LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
-    }*/
+        LxPlot.getChart("Etat Vloets", ChartType.BAR).add(id, exterieur.Valeur());
 
-}
+
+}}

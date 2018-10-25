@@ -53,18 +53,24 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
                     default:
                     break;
             }
-            }
+
+        state = nextState;
+
     }
-        //state = nextState;
 
 
-    /*@Override
-    protected double computeCriticality() {
+
+
+
+
+
+    protected double luminositeIntension(int luminositeIntension) {
+        exterieur.Valeur();
         return luminositeIntension;
     }
 
     @Override
     protected void onUpdateRender() {
-        LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
-    }
-*/
+        LxPlot.getChart("luminositeIntension", ChartType.BAR).add(id,exterieur.Valeur() );
+    }}
+
