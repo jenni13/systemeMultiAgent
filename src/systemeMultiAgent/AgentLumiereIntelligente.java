@@ -8,7 +8,7 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
     private CapteurLuminosite exterieur;
-    private double luminositeIntension;
+    private SatisfationClient s;
     private int id;
 
     public enum State {
@@ -17,11 +17,12 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 
     private State state = State.ETEINDRE;
 
-    public AgentLumiereIntelligente(int id, MyAMAS amas, CapteurLuminosite interieur, CapteurLuminosite exterieur) {
+    public AgentLumiereIntelligente(int id, MyAMAS amas, CapteurLuminosite interieur, CapteurLuminosite exterieur,SatisfationClient s) {
         super(amas);
         this.id = id;
         this.interieur = interieur;
         this.exterieur = exterieur;
+        this.s=s;
     }
 
     @Override
@@ -39,30 +40,66 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
                 case ETEINDRE:
                     if (interieur.Valeur() > 15)
                     {
-
                         System.out.println(" Allumer la  Lumiere " + this.id);
                         break;
                     }
+        			if(s.getMoyenne()<5)
+        			{
+        				
+        				System.out.println("Mauvaise satisfaction "+ this.id);
+        				s.addNote();
+        				s.removeNote();
+        				s.afficherNotes(s.getNote());
+        				s.calculMoyenne(s.getNote());
+        				break;
+        			}
+        			else if(s.getMoyenne()>=5)
+        			{
+        				System.out.println("Bonne satisfaction "+ this.id);
+        				
+        				s.addNote();
+        				s.removeNote();
+        				s.afficherNotes(s.getNote());
+        				s.calculMoyenne(s.getNote());
+        				s.getMoyenne();
+        				break;
+        			}
             case ALLUMER:
                     if (exterieur.Valeur() < 15)
                     {
                         System.out.println("fermer la lumiere " + this.id);
                         break;
                     }
+        			if(s.getMoyenne()<5)
+        			{
+        				
+        				System.out.println("Mauvaise satisfaction "+ this.id);
+        				s.addNote();
+        				s.removeNote();
+        				s.afficherNotes(s.getNote());
+        				s.calculMoyenne(s.getNote());
+        				break;
+        			}
+        			else if(s.getMoyenne()>=5)
+        			{
+        				System.out.println("Bonne satisfaction "+ this.id);
+        				
+        				s.addNote();
+        				s.removeNote();
+        				s.afficherNotes(s.getNote());
+        				s.calculMoyenne(s.getNote());
+        				s.getMoyenne();
+        				break;
+        			}
+                    
 
                     default:
-                    break;
+                    	break;
             }
 
         state = nextState;
 
     }
-
-
-
-
-
-
 
     protected double luminositeIntension(int luminositeIntension) {
         exterieur.Valeur();
