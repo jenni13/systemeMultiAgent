@@ -13,7 +13,7 @@ public class Salle extends Environment{
     private CapteurLuminosite[] capteurLum;
     SatisfationClient sc ;
 	
-    public Salle(int h,int d,int f) {
+    public Salle() {
     	
         super(Scheduling.DEFAULT);
         sc = new SatisfationClient();

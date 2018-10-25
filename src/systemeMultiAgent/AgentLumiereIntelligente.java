@@ -58,12 +58,6 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 
     }
 
-
-
-
-
-
-
     protected double luminositeIntension(int luminositeIntension) {
         exterieur.Valeur();
         return luminositeIntension;

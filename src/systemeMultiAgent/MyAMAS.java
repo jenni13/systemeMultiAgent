@@ -19,15 +19,14 @@ public class MyAMAS extends Amas<Salle>{
 	        for (int i=0;i<getEnvironment().getCapteurLum().length-1;i++) 
 	        {
 	            l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
-	            v[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
+	            v[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1],getEnvironment().sc);
 	        }
 	    }
 
 public static void main(String[] args) {
-    Salle env = new Salle();
-    SatisfationClient satisfationClient = new SatisfationClient();
-    MyAMAS myAMAS = new MyAMAS(env);
 
+    Salle env = new Salle();
+    MyAMAS myAMAS = new MyAMAS(env);
 
     //Affichage de la date et l'heure actuelle de Notre Systeme
     Date date = new Date();
