@@ -11,10 +11,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
     private CapteurLuminosite exterieur;
-<<<<<<< HEAD
-=======
-    private Salle date;
->>>>>>> e5d0a63dcc1630670662465e6b4b279f65087466
+
     int id;
     
     
@@ -46,21 +43,21 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         switch (state) {
         case OUVERT:
 
-<<<<<<< HEAD
+
     			if(interieur.Valeur()<10 || exterieur.Valeur()>15)
     			{
     				System.out.println(" Ouverture volet numero "+ this.id);
     				break;
     			}
         		
-=======
+
         		if(interieur.Valeur()<10 || exterieur.Valeur()>15)
         		{
         			
         			System.out.println(" Ouverture volet numero "+ this.id);
         			break;
         		}
->>>>>>> e5d0a63dcc1630670662465e6b4b279f65087466
+
         case FERMER:
 
         		if (exterieur.Valeur()<10)
