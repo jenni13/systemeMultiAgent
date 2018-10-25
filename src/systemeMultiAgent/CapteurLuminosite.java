@@ -9,13 +9,12 @@ public class CapteurLuminosite {
     /*public CapteurLuminosite(int n) {
         this.n = n;
     }*/
- public int Valeur ()
- {
-     Random rand = new Random();
-     n = rand.nextInt(20) + 1;
-     System.out.println("Luminosité = " + n);
-     return n;
- }
+    public int Valeur ()
+    {
+        Random rand = new Random();
+        n = rand.nextInt(20) + 1;
+        System.out.println("Luminosité = " + n);
+        return n;
+    }
 
 }
-
