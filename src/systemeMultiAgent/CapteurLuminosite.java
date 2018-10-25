@@ -20,7 +20,6 @@ public class CapteurLuminosite {
 
 }
 
-
 /*
     public synchronized boolean tryTake(AgentLumiereIntelligente asker) {
         if (takenBy != null)
