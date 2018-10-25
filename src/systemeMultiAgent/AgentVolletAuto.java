@@ -11,6 +11,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
     private CapteurLuminosite exterieur;
+    private Salle date;
     int id;
     
     
@@ -40,6 +41,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         State nextState = state;
         switch (state) {
         case OUVERT:
+        		if(date.)
         		if(interieur.Valeur()<10 || exterieur.Valeur()>15)
         		{
         			
