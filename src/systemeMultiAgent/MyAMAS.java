@@ -27,6 +27,14 @@ public static void main(String[] args) {
     Salle env = new Salle();
     SatisfationClient satisfationClient = new SatisfationClient();
     MyAMAS myAMAS = new MyAMAS(env);
+
+
+    //Affichage de la date et l'heure actuelle de Notre Systeme
+    Date date = new Date();
+    String str = String.format("Date/heure actuelle : %tc", date );
+    System.out.printf(str);
+    System.out.printf("\n");
+
 }
 
 }
