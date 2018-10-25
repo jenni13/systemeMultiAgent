@@ -10,12 +10,7 @@ import systemeMultiAgent.AgentLumiereIntelligente.State;
 public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
-<<<<<<< HEAD
     private CapteurLuminosite exterieur;
-    private Salle date;
-=======
-    private CapteurLuminosite  exterieur ;
->>>>>>> branch 'master' of https://github.com/jenni13/systemeMultiAgent.git
     int id;
     
     
@@ -25,12 +20,13 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 
     private State state = State.OUVERT;
     
-	public AgentVolletAuto(int id, MyAMAS amas,CapteurLuminosite interieur,CapteurLuminosite exterieur) 
+	public AgentVolletAuto(int id, MyAMAS amas,CapteurLuminosite interieur,CapteurLuminosite exterieur)
 	{
         super(amas);
         this.id = id;
         this.interieur = interieur;
-        this.exterieur = exterieur;     
+        this.exterieur = exterieur;
+
     }
 	
     @Override
@@ -45,22 +41,23 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         State nextState = state;
         switch (state) {
         case OUVERT:
-        		if(date.)
-        		if(interieur.Valeur()<10 || exterieur.Valeur()>15)
-        		{
-        			
-        			System.out.println(" Ouverture volet numero "+ this.id);
-        			break;
-        		}
+
+    			if(interieur.Valeur()<10 || exterieur.Valeur()>15)
+    			{
+    				System.out.println(" Ouverture volet numero "+ this.id);
+    				break;
+    			}
+        		
         case FERMER:
+
         		if (exterieur.Valeur()<10)
         		{
         			System.out.println("fermeture volet numero "+ this.id);
         			break;
         		}
-        	
+
         default:
-            break;
+        	break;
 
         }
 

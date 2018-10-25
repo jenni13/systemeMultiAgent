@@ -23,7 +23,10 @@ public class MyAMAS extends Amas<Salle>{
 
 
 public static void main(String[] args) {
-    Salle env = new Salle();
+	int h =15;
+	int d= 7;
+	int f = 19;
+    Salle env = new Salle(h,d,f);
     new MyAMAS(env);
 }
 
