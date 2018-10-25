@@ -1,5 +1,4 @@
 package systemeMultiAgent;
-import java.util.Date;
 import java.util.Random;
 import fr.irit.smac.amak.Agent;
 import fr.irit.smac.lxplot.LxPlot;
@@ -41,47 +40,34 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
                     if (interieur.Valeur() > 15)
                     {
 
-                        System.out.println(" Eteindre la  Lumiere " + this.id);
+                        System.out.println(" Allumer la  Lumiere " + this.id);
                         break;
                     }
             case ALLUMER:
                     if (exterieur.Valeur() < 15)
                     {
-                        System.out.println("Allumer la lumiere " + this.id);
+                        System.out.println("fermer la lumiere " + this.id);
                         break;
                     }
 
                     default:
                     break;
             }
-/*
 
-        switch (state) {
-            //Eteindre la lumiere du 18h DU SOIR jusqu'au 5h du matain
-            case ETEINDRE:
-                if ( )
-                {
-                    System.out.println(" Eteindre la  Lumiere ");
-                    break;
-                }
-                //Ouvrir la lumiere a partir de 5h jusqu'A 18h du soir
-            case ALLUMER:
-                if ()
-                {
-                    System.out.println("Allumer la lumiere " );
-                    break;
-                }
+        state = nextState;
 
-            default:
-                break;
-        }
-*/
+    }
 
-        state = nextState; }
+
+
+
+
+
 
     protected double luminositeIntension(int luminositeIntension) {
         exterieur.Valeur();
-        return luminositeIntension; }
+        return luminositeIntension;
+    }
 
     @Override
     protected void onUpdateRender() {

@@ -11,7 +11,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 	
     private CapteurLuminosite interieur;
     private CapteurLuminosite exterieur;
-    private Salle date;
+    private SatisfationClient s;
     int id;
     
     
@@ -21,12 +21,13 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
 
     private State state = State.OUVERT;
     
-	public AgentVolletAuto(int id, MyAMAS amas,CapteurLuminosite interieur,CapteurLuminosite exterieur) 
+	public AgentVolletAuto(int id, MyAMAS amas,CapteurLuminosite interieur,CapteurLuminosite exterieur,SatisfationClient s)
 	{
         super(amas);
         this.id = id;
         this.interieur = interieur;
-        this.exterieur = exterieur;     
+        this.exterieur = exterieur;
+        this.s=s;
     }
 	
     @Override
@@ -38,35 +39,81 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
     
     @Override
     protected void onDecideAndAct() {
-        State nextState = state;
+
         switch (state) {
         case OUVERT:
 
-        		if(interieur.Valeur()<10 || exterieur.Valeur()>15)
-        		{
-        			
-        			System.out.println(" Ouverture volet numero "+ this.id);
-        			break;
-        		}
+    			if(interieur.Valeur()<10 || exterieur.Valeur()>15)
+    			{
+    				System.out.println("Ouverture volet numero "+ this.id);
+    				break;
+    			}
+    			if(s.getMoyenne()<5)
+    			{
+    				
+    				System.out.println("Mauvaise satisfaction "+ this.id);
+    				s.addNote();
+    				s.removeNote();
+    				s.afficherNotes(s.getNote());
+    				s.calculMoyenne(s.getNote());
+    				break;
+    			}
+    			else if(s.getMoyenne()>=5)
+    			{
+    				System.out.println("Bonne satisfaction "+ this.id);
+    				
+    				s.addNote();
+    				s.removeNote();
+    				s.afficherNotes(s.getNote());
+    				s.calculMoyenne(s.getNote());
+    				s.getMoyenne();
+    				break;
+    			}
+        		
         case FERMER:
+
         		if (exterieur.Valeur()<10)
         		{
         			System.out.println("fermeture volet numero "+ this.id);
         			break;
         		}
-        	
+        		
+      			if(s.getMoyenne()<5)
+    			{
+    				System.out.println(" Mauvaise satisfaction "+ this.id);
+    				s.addNote();
+    				s.removeNote();
+    				s.afficherNotes(s.getNote());
+    				s.calculMoyenne(s.getNote());
+    				s.getMoyenne();
+
+    				break;
+    			}
+      			
+    			if(s.getMoyenne()>=5)
+    			{
+    				System.out.println("Bonne satisfaction "+ this.id);
+    				
+    				s.addNote();
+    				s.removeNote();
+    				s.afficherNotes(s.getNote());
+    				s.calculMoyenne(s.getNote());
+    				s.getMoyenne();
+    				break;
+    			}
+
         default:
-            break;
+        	break;
 
         }
 
-        state = nextState;
+       
     }
 
     @Override
     protected void onUpdateRender()
     {
-        LxPlot.getChart("Etat Vloets", ChartType.BAR).add(id, exterieur.Valeur());
+        LxPlot.getChart("Etat Volets", ChartType.BAR).add(id, exterieur.Valeur());
 
-
-}}
+    }
+}
