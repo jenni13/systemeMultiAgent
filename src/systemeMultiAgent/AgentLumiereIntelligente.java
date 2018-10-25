@@ -54,20 +54,11 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
                     break;
             }
 
-        state = nextState;
-
-    }
-
-
-
-
-
-
+        state = nextState; }
 
     protected double luminositeIntension(int luminositeIntension) {
         exterieur.Valeur();
-        return luminositeIntension;
-    }
+        return luminositeIntension; }
 
     @Override
     protected void onUpdateRender() {

@@ -12,5 +12,4 @@ public class CapteurLuminosite {
         System.out.println("Luminosité = " + n);
         return n;
     }
-
 }

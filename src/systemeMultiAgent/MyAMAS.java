@@ -3,6 +3,9 @@ package systemeMultiAgent;
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Scheduling;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class MyAMAS extends Amas<Salle>{
 	  
 	public MyAMAS(Salle env) {
@@ -23,12 +26,7 @@ public class MyAMAS extends Amas<Salle>{
 public static void main(String[] args) {
     Salle env = new Salle();
     SatisfationClient satisfationClient = new SatisfationClient();
-    new MyAMAS(env);
-
-
-
-
-
+    MyAMAS myAMAS = new MyAMAS(env);
 }
 
 }

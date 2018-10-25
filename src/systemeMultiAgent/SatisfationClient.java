@@ -16,8 +16,6 @@ public class SatisfationClient {
     {
         this.moyenne = 0.0;
     }
-
-
     private void addNote(ArrayList<Double> tab,double note)
     {
         tab.add(note);
@@ -43,7 +41,7 @@ public class SatisfationClient {
             somme += it.next();
             this.moyenne = somme / listNotes.size();
         }
+    }
 
-
-    }}
+}
 
