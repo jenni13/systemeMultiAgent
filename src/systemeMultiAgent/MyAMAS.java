@@ -20,8 +20,6 @@ public class MyAMAS extends Amas<Salle>{
 	        }
 	    }
 
-
-
 public static void main(String[] args) {
     Salle env = new Salle();
     new MyAMAS(env);
