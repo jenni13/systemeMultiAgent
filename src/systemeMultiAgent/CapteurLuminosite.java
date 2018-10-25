@@ -5,10 +5,6 @@ public class CapteurLuminosite {
     //private AgentLumiereIntelligente takenBy;
     int n;
 
-
-    /*public CapteurLuminosite(int n) {
-        this.n = n;
-    }*/
     public int Valeur ()
     {
         Random rand = new Random();

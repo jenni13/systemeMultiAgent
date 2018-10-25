@@ -20,14 +20,22 @@ public class MyAMAS extends Amas<Salle>{
 	        }
 	    }
 
-
-
 public static void main(String[] args) {
+<<<<<<< HEAD
 	int h =15;
 	int d= 7;
 	int f = 19;
     Salle env = new Salle(h,d,f);
+=======
+    Salle env = new Salle();
+    SatisfationClient satisfationClient = new SatisfationClient();
+>>>>>>> e5d0a63dcc1630670662465e6b4b279f65087466
     new MyAMAS(env);
+
+
+
+
+
 }
 
 }
