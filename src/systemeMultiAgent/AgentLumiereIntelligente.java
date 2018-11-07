@@ -35,7 +35,7 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 	@Override
     protected void onDecideAndAct() {
         State nextState = state;
-        Date date = new Date();
+        //Date date = new Date();
         switch (state) {
 
 
@@ -46,13 +46,13 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
                         break;
                     }
                     
-                    if (date.getHours()== 13)
+                   // if (date.getHours()== 13)
                     	
-                    {
-                    	  System.out.println(" Allumer la  Lumiere " + this.id + " à l'heure " +date.getHours());
-                    	  this.state = nextState;
+                   // {
+                    	  System.out.println(" Allumer la  Lumiere " + this.id + " à l'heure " /*+date.getHours()*/);
+                    	  nextState=State.ALLUMER;
                           break;
-                    }
+                   // }
                     
                     
                     
@@ -63,13 +63,13 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
                         break;
                     }
                     
-                    if (date.getHours()== 7)
+                    //if (date.getHours()== 7)
                     
-                    {
-                    	System.out.println(" Eteindre la  Lumiere " + this.id + " +à l'heure " +date.getHours());
-                    	 this.state = nextState;
+                    //{
+                    	System.out.println(" Eteindre la  Lumiere " + this.id + " +à l'heure " /*+date.getHours()*/);
+                    	 nextState=State.ETEINDRE;
                      
-                    }
+                   // }
         
                     default:
                     break;
