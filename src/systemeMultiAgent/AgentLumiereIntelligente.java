@@ -1,5 +1,5 @@
 package systemeMultiAgent;
-import java.util.Date;
+
 import java.util.Random;
 import fr.irit.smac.amak.Agent;
 import fr.irit.smac.lxplot.LxPlot;
@@ -35,48 +35,45 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
 	@Override
     protected void onDecideAndAct() {
         State nextState = state;
-        //Date date = new Date();
         switch (state) {
 
 
                 case ETEINDRE:
-                    if (interieur.Valeur() > 15)
+                	if(this.amas.getEnvironment().heure.after(this.amas.getEnvironment().heured) && this.amas.getEnvironment().heure.before(this.amas.getEnvironment().heuref))
                     {
-                        System.out.println(" Allumer la  Lumiere " + this.id );
-                        break;
+                	
+                		System.out.println("allo");
+                		if (interieur.Valeur() < 15)
+                    
+                		{
+                			System.out.println(" Allumer la  Lumiere ampoule " + this.id );
+                			nextState=State.ALLUMER;
+                       
+                			break;
+                		}
                     }
-                    
-                   // if (date.getHours()== 13)
-                    	
-                   // {
-                    	  System.out.println(" Allumer la  Lumiere " + this.id + " à l'heure " /*+date.getHours()*/);
-                    	  nextState=State.ALLUMER;
-                          break;
-                   // }
-                    
                     
                     
               case ALLUMER:
-                    if (exterieur.Valeur() < 15)
+                    if (exterieur.Valeur() > 15)
                     {
-                        System.out.println("fermer la lumiere " + this.id);
+                        System.out.println("eteindre la lumiere ampoule" + this.id);
+                        nextState=State.ETEINDRE;
                         break;
                     }
-                    
-                    //if (date.getHours()== 7)
-                    
-                    //{
-                    	System.out.println(" Eteindre la  Lumiere " + this.id + " +à l'heure " /*+date.getHours()*/);
-                    	 nextState=State.ETEINDRE;
-                     
-                   // }
-        
-                    default:
-                    break;
+                    if(this.amas.getEnvironment().heure.before(this.amas.getEnvironment().heured) || this.amas.getEnvironment().heure.after(this.amas.getEnvironment().heuref))
+                    {
+                    	  System.out.println("lumiere eteinte car hors des heure d'ouverture" + this.id);
+                          nextState=State.ETEINDRE;
+                          break;
+                    }
+                  
+              default:
+            	  break;
             }
 
         state = nextState;
-
+        System.out.println ("Je suis"+ state);
     }
 
     protected double luminositeIntension(int luminositeIntension) {
