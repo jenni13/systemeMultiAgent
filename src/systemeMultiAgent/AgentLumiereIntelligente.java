@@ -37,12 +37,10 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
         State nextState = state;
         switch (state) {
 
-
+        		
                 case ETEINDRE:
                 	if(this.amas.getEnvironment().heure.after(this.amas.getEnvironment().heured) && this.amas.getEnvironment().heure.before(this.amas.getEnvironment().heuref))
                     {
-                	
-                		System.out.println("allo");
                 		if (interieur.Valeur() < 15)
                     
                 		{
@@ -73,7 +71,7 @@ public class AgentLumiereIntelligente extends Agent<MyAMAS,Salle>{
             }
 
         state = nextState;
-        System.out.println ("Je suis"+ state);
+        System.out.println ("Je suis "+ state);
     }
 
     protected double luminositeIntension(int luminositeIntension) {

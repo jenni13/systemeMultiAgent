@@ -6,16 +6,17 @@ import fr.irit.smac.amak.Scheduling;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 
 public class Salle extends Environment{
-    private CapteurLuminosite[] capteurLum;
+    
+	private CapteurLuminosite[] capteurLum;
     public SatisfationClient sc ;
     public Calendar heure = Calendar.getInstance(); 
     public Calendar heured = Calendar.getInstance();
     public Calendar heuref = Calendar.getInstance();
-    
     
     public Salle() {
     	
@@ -26,10 +27,10 @@ public class Salle extends Environment{
         sc.afficherNotes(n);
         sc.calculMoyenne(n);
         //this.heure.get(Calendar.HOUR_OF_DAY);
-        this.heure.set(Calendar.HOUR,5);
+        this.heure.set(Calendar.HOUR,12);
+        //this.heure.get(Calendar.MINUTE);
         this.heured.set(Calendar.HOUR,7);
-        this.heuref.set(Calendar.HOUR,18);
-        
+        this.heuref.set(Calendar.HOUR,19);
     }
     @Override
     public void onInitialization() 
@@ -47,6 +48,13 @@ public class Salle extends Environment{
         return capteurLum;
     }
     
-    
+    public Calendar setHeure(Calendar heure,int n)  //simuler les heures qui passent dans une journée
+    {
+    	heure= Calendar.getInstance();
+    	heure.get(Calendar.MINUTE);	
+    	System.out.println("Heure: "+heure+"\n");
+
+    	return heure;
+    }
 
 }
