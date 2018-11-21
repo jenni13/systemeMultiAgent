@@ -3,15 +3,15 @@ import java.util.Random;
 
 public class CapteurLuminosite {
     int n;
+    
+   
 
-   /* public int Valeur ()
+  /* public int Valeur ()
     {
-        Random rand = new Random();
-        n = rand.nextInt(20) + 1;
-        System.out.println("Luminosité = " + n);
+	   if(Agent)
         return n;
-    }
-    */
+    }*/
+   
    public int Valeur()
     {	
 	   System.out.println("n = "+n+"\n");

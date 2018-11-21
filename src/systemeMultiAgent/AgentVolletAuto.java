@@ -39,13 +39,17 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
     
     @Override
     protected void onDecideAndAct() {
-
+    	State nextState = state;
         switch (state) {
+        
         case OUVERT:
+        	if(this.amas.getEnvironment().heure.after(this.amas.getEnvironment().heured) && this.amas.getEnvironment().heure.before(this.amas.getEnvironment().heuref))
+            {
 
     			if(interieur.Valeur()<10 || exterieur.Valeur()>15)
     			{
     				System.out.println("Ouverture volet numero "+ this.id);
+    				nextState=State.OUVERT;
     				break;
     			}
     			if(s.getMoyenne()<5)
@@ -56,6 +60,7 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
     				s.removeNote();
     				s.afficherNotes(s.getNote());
     				s.calculMoyenne(s.getNote());
+    				
     				break;
     			}
     			else if(s.getMoyenne()>=5)
@@ -69,13 +74,22 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
     				s.getMoyenne();
     				break;
     			}
+            }
         		
         case FERMER:
+        		if(this.amas.getEnvironment().heure.before(this.amas.getEnvironment().heured) || this.amas.getEnvironment().heure.after(this.amas.getEnvironment().heuref))
+        		{
+        			System.out.println("Volets car hors des heure d'ouverture" + this.id);
+                    nextState=State.FERMER;
+                    break;
+        		}
 
         		if (exterieur.Valeur()<10)
         		{
         			System.out.println("fermeture volet numero "+ this.id);
+        			nextState=State.FERMER;
         			break;
+        			
         		}
         		
       			if(s.getMoyenne()<5)
@@ -106,6 +120,8 @@ public class AgentVolletAuto  extends Agent<MyAMAS,Salle>{
         	break;
 
         }
+        state = nextState;
+        System.out.println ("Je suis "+ state);
 
        
     }

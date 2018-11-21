@@ -23,7 +23,7 @@ public class MyAMAS extends Amas<Salle>{
 	        //Create one light an one shutter per captors
 	        for (int i=0;i<getEnvironment().getCapteurLum().length-1;i++) 
 	        {
-	            l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
+	            //l[i] =new AgentLumiereIntelligente(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1]);
 	            v[i] =new AgentVolletAuto(i, this, getEnvironment().getCapteurLum()[i], getEnvironment().getCapteurLum()[i+1],getEnvironment().sc);
 	        }
 	    }
@@ -35,7 +35,8 @@ public static void main(String[] args) {
 
 	//env.heure.get(Calendar.MINUTE);
     	
-  
+	env.onCycle();
+	
     //Affichage de la date et l'heure actuelle de Notre Systeme
     //Date date = new Date();
     //String str = String.format("Date/heure actuelle : %tc", date );
